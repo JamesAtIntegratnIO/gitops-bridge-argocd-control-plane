@@ -13,7 +13,7 @@ spec:
         generators:
           - clusters:
               values:
-                addonChart: op-connect
+                addonChart: connect
                 # anything not staging or prod use this version
                 addonChartVersion: 1.15.1
                 addonChartRepository: https://1password.github.io/connect-helm-charts
