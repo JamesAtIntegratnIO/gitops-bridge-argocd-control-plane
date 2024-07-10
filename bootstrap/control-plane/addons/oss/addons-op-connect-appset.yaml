@@ -39,7 +39,7 @@ spec:
                 addonChartVersion: 1.15.1
   template:
     metadata:
-      name: addon-{{.name}}-{{.values.addonChart}}
+      name: addon-{{.name}}-op-{{.values.addonChart}}
     spec:
       project: default
       sources:
@@ -50,26 +50,21 @@ spec:
             releaseName: '{{.values.addonChart}}'
             ignoreMissingValueFiles: true
             valueFiles:
-              - $values/{{.metadata.annotations.addons_repo_basepath}}charts/addons/{{.values.addonChart}}/values.yaml
-              - $values/{{.metadata.annotations.addons_repo_basepath}}environments/{{.metadata.labels.environment}}/addons/{{.values.addonChart}}/values.yaml
-              - $values/{{.metadata.annotations.addons_repo_basepath}}environments/clusters/{{.name}}/addons/{{.values.addonChart}}/values.yaml
+              - $values/{{.metadata.annotations.addons_repo_basepath}}charts/addons/op-{{.values.addonChart}}/values.yaml
+              - $values/{{.metadata.annotations.addons_repo_basepath}}environments/{{.metadata.labels.environment}}/addons/op-{{.values.addonChart}}/values.yaml
+              - $values/{{.metadata.annotations.addons_repo_basepath}}environments/clusters/{{.name}}/addons/op-{{.values.addonChart}}/values.yaml
         - repoURL: '{{.metadata.annotations.addons_repo_url}}'
           targetRevision: '{{.metadata.annotations.addons_repo_revision}}'
-          path: '{{.metadata.annotations.addons_repo_basepath}}environments/{{.metadata.labels.environment}}/addons/{{.values.addonChart}}'
+          path: '{{.metadata.annotations.addons_repo_basepath}}environments/{{.metadata.labels.environment}}/addons/op-{{.values.addonChart}}'
           ref: values
         - repoURL: '{{.metadata.annotations.addons_repo_url}}'
           targetRevision: '{{.metadata.annotations.addons_repo_revision}}'
-          path: '{{.metadata.annotations.addons_repo_basepath}}environments/clusters/{{.name}}/addons/{{.values.addonChart}}/'
+          path: '{{.metadata.annotations.addons_repo_basepath}}environments/clusters/{{.name}}/addons/op-{{.values.addonChart}}/'
       destination:
-        namespace: 'op-connect-system'
+        namespace: 'op-{{.values.addonChart}}'
         name: '{{.name}}'
       syncPolicy:
         automated: {}
         syncOptions:
           - CreateNamespace=true
           - ServerSideApply=true # Big CRDs.
-        managedNamespaceMetadata:
-          labels:
-            pod-security.kubernetes.io/enforce: privileged
-            pod-security.kubernetes.io/audit: privileged
-            pod-security.kubernetes.io/warn: privileged
