@@ -61,10 +61,15 @@ spec:
           targetRevision: '{{.metadata.annotations.addons_repo_revision}}'
           path: '{{.metadata.annotations.addons_repo_basepath}}environments/clusters/{{.name}}/addons/{{.values.addonChart}}/'
       destination:
-        namespace: '{{.values.addonChart}}'
+        namespace: 'metallb-system'
         name: '{{.name}}'
       syncPolicy:
         automated: {}
         syncOptions:
           - CreateNamespace=true
           - ServerSideApply=true # Big CRDs.
+        managedNamespaceMetadata:
+          labels:
+            pod-security.kubernetes.io/enforce: privileged
+            pod-security.kubernetes.io/audit: privileged
+            pod-security.kubernetes.io/warn: privileged
