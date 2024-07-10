@@ -1,0 +1,9 @@
+server:
+  service:
+    annotations:
+      metallb.universe.tf/loadBalancerIPs: 10.0.4.201
+      metallb.universe.tf/address-pool: default
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hostname: argocd.controlplane.k8s.integratn.tech
