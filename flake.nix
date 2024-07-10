@@ -35,11 +35,6 @@
             talosctl
           
           ];
-          shellHook = ''
-            set -a
-            source ./secrets.env
-            set +a
-            '';
         };
       }
     );
