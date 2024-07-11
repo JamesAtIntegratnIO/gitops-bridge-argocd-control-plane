@@ -22,7 +22,7 @@ spec:
                   - key: akuity.io/argo-cd-cluster-name
                     operator: NotIn
                     values: [in-cluster]
-                  - key: enable_external_dns
+                  - key: enable_aws_external_dns
                     operator: In
                     values: ['true']
           - clusters:
