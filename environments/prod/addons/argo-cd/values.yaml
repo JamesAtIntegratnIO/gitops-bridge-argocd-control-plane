@@ -12,3 +12,7 @@ server:
       cert-manager.io/cluster-issuer: letsencrypt-prod
     tls: true
 
+configs:
+  params:
+    server.insecure: true
+
