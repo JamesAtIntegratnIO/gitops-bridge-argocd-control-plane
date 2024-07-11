@@ -12,3 +12,11 @@ provider:
 
 extraArgs:
   - --pihole-server=http://192.168.16.53
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 100Mi
+  limits:
+    cpu: 500m
+    memory: 500Mi

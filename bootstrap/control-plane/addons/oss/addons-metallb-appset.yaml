@@ -85,3 +85,12 @@ spec:
           name: addresspools.metallb.io
           jsonPointers:
             - /spec/conversion/webhook/clientConfig/caBundle
+        - group: admissionregistration.k8s.io
+          kind: ValidatingWebhookConfiguration
+          jqPathExpressions:
+            - .webhooks[]?.clientConfig.caBundle
+        - group: apps
+          kind: DaemonSet
+          jqPathExpressions:
+          - .spec.template.spec.initContainers[]?.resources
+
