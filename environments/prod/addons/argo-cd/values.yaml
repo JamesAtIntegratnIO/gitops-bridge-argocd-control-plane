@@ -1,3 +1,5 @@
+global:
+  domain: argocd.controlplane.k8s.integratn.tech
 server:
   service:
     annotations:
@@ -6,4 +8,7 @@ server:
   ingress:
     enabled: true
     ingressClassName: nginx
-    hostname: argocd.controlplane.k8s.integratn.tech
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls: true
+
