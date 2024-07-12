@@ -65,8 +65,4 @@ spec:
         syncOptions:
           - CreateNamespace=true
           - ServerSideApply=true  # Big CRDs.
-      ignoreDifferences:
-        - group: apps
-          kind: Deployment
-          jsonPointers:
-            - /spec/template/spec/container/[]/env/[] | select(.name =="REDIS_PASSWORD")
+
