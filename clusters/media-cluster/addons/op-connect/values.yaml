@@ -173,7 +173,7 @@ connect:
     # See: https://kubernetes.io/docs/concepts/services-networking/ingress/#path-types for other possible values.
     pathType: Prefix
     hosts:
-      - host: op-connect.k8s.integratn.tech
+      - host: op-connect.media-cluster.integratn.tech
         paths: []
     # Extra paths to prepend to the host configuration.
     # This is useful when working with annotation based services.
@@ -187,7 +187,7 @@ connect:
     tls:
       - secretName: op-connect-tls
         hosts:
-          - op-connect.controlplane.k8s.integratn.tech
+          - op-connect.media-cluster.integratn.tech
 
   # Optionally the internal profiler can be enabled to debug memory or performance issues.
   # For normal operation of Connect this does not have to enabled.
