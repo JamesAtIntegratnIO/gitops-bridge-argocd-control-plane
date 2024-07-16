@@ -4,15 +4,5 @@ server:
   service:
     annotations:
       metallb.universe.tf/loadBalancerIPs: 10.0.5.201
-      metallb.universe.tf/address-pool: default
-  ingress:
-    enabled: true
-    ingressClassName: nginx
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-    tls: true
 
-configs:
-  params:
-    server.insecure: true
 
